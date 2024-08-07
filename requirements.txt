@@ -1,0 +1,9 @@
+folium==0.16.0
+ipython==8.12.3
+ipywidgets==8.1.2
+matplotlib==3.8.4
+numpy==1.26.4
+pandas==2.2.2
+Requests==2.32.2
+seaborn==0.13.2
+Shapely==2.0.4
