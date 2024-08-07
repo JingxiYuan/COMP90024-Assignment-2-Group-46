@@ -1,0 +1,11 @@
+apiVersion: fission.io/v1
+kind: TimeTrigger
+metadata:
+  creationTimestamp: null
+  name: bom-ingest-mel-1
+spec:
+  cron: '@hourly'
+  functionref:
+    functionweights: null
+    name: bomharvesting-mel-2
+    type: name

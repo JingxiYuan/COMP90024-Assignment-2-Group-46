@@ -1,0 +1,11 @@
+apiVersion: fission.io/v1
+kind: TimeTrigger
+metadata:
+  creationTimestamp: null
+  name: bom-ingest-south-west-2
+spec:
+  cron: '@hourly'
+  functionref:
+    functionweights: null
+    name: bomharvesting-south-west-2
+    type: name
