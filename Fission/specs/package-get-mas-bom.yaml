@@ -1,0 +1,25 @@
+include:
+- ./getMasBom.zip
+kind: ArchiveUploadSpec
+name: getmasbom-zip-ieYN
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: get-mas-bom
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: relapython
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://getmasbom-zip-ieYN
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-16T06:30:39Z"

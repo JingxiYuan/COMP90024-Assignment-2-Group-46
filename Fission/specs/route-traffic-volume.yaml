@@ -1,0 +1,22 @@
+apiVersion: fission.io/v1
+kind: HTTPTrigger
+metadata:
+  creationTimestamp: null
+  name: traffic-volume
+spec:
+  createingress: false
+  functionref:
+    functionweights: null
+    name: traffic-analysis
+    type: name
+  host: ""
+  ingressconfig:
+    annotations: null
+    host: '*'
+    path: /{index:[a-zA-Z_]*}/{city:[a-zA-Z_]*}
+    tls: ""
+  method: ""
+  methods:
+  - GET
+  prefix: ""
+  relativeurl: /{index:[a-zA-Z_]*}/{city:[a-zA-Z_]*}

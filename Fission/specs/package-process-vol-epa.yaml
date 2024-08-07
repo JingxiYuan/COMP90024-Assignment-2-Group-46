@@ -1,0 +1,25 @@
+include:
+- ./processVolEPA.zip
+kind: ArchiveUploadSpec
+name: processvolepa-zip-BIaU
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: process-vol-epa
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: relapython
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://processvolepa-zip-BIaU
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-14T11:42:32Z"

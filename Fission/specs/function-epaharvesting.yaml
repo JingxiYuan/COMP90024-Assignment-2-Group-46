@@ -1,0 +1,52 @@
+include:
+- ./functions/epaharvesting.py
+kind: ArchiveUploadSpec
+name: functions-epaharvesting-py-swhp
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: epaharvesting-c8815024-c602-4c7a-b829-b46eb870f7c3
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://functions-epaharvesting-py-swhp
+  environment:
+    name: python-39
+    namespace: ""
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2024-05-12T09:29:03Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: epaharvesting
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python-39
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: epaharvesting-c8815024-c602-4c7a-b829-b46eb870f7c3
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

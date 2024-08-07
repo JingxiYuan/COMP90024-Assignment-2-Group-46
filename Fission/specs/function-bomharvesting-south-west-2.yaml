@@ -1,0 +1,52 @@
+include:
+- ./functions/bomharvesting-south-west-2.py
+kind: ArchiveUploadSpec
+name: functions-bomharvesting-south-west-2-py-Mc4n
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: bomharvesting-south-west-2-768dcc84-d787-43aa-a8b0-84ce993292ce
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://functions-bomharvesting-south-west-2-py-Mc4n
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2024-05-11T15:09:30Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: bomharvesting-south-west-2
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: bomharvesting-south-west-2-768dcc84-d787-43aa-a8b0-84ce993292ce
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

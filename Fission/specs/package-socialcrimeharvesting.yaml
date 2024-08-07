@@ -1,0 +1,25 @@
+include:
+- ./functions/socialcrimeharvesting.zip
+kind: ArchiveUploadSpec
+name: functions-socialcrimeharvesting-zip-xq8Q
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: socialcrimeharvesting
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://functions-socialcrimeharvesting-zip-xq8Q
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-15T02:38:40Z"

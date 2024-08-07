@@ -1,0 +1,25 @@
+include:
+- ./offencerecordFis.zip
+kind: ArchiveUploadSpec
+name: offencerecordfis-zip-2HKs
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: offence-record
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: relapython
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://offencerecordfis-zip-2HKs
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-14T12:11:01Z"

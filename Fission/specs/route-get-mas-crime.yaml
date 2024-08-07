@@ -1,0 +1,22 @@
+apiVersion: fission.io/v1
+kind: HTTPTrigger
+metadata:
+  creationTimestamp: null
+  name: get-mas-crime
+spec:
+  createingress: true
+  functionref:
+    functionweights: null
+    name: get-mas-crime
+    type: name
+  host: ""
+  ingressconfig:
+    annotations: null
+    host: "*"
+    path: /data/mastodon/crime
+    tls: ""
+  method: ""
+  methods:
+    - GET
+  prefix: ""
+  relativeurl: /data/mastodon/crime

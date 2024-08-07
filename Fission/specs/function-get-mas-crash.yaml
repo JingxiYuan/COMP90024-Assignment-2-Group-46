@@ -1,0 +1,30 @@
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: get-mas-crash
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  configmaps:
+  - name: shared-data
+    namespace: ""
+  environment:
+    name: relapython
+    namespace: ""
+  functionTimeout: 3000
+  idletimeout: 120
+  package:
+    functionName: getMasCrash.main
+    packageref:
+      name: get-mas-crash
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

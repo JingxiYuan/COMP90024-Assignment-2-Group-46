@@ -1,0 +1,30 @@
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: process-vol-epa
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  configmaps:
+  - name: shared-data
+    namespace: ""
+  environment:
+    name: relapython
+    namespace: ""
+  functionTimeout: 300
+  idletimeout: 120
+  package:
+    functionName: processVolEPA.main
+    packageref:
+      name: process-vol-epa
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

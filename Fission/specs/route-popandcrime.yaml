@@ -1,0 +1,22 @@
+apiVersion: fission.io/v1
+kind: HTTPTrigger
+metadata:
+  creationTimestamp: null
+  name: popandcrime
+spec:
+  createingress: false
+  functionref:
+    functionweights: null
+    name: population
+    type: name
+  host: ""
+  ingressconfig:
+    annotations: null
+    host: '*'
+    path: /population/crime/city/{city:[a-zA-Z_]*}
+    tls: ""
+  method: ""
+  methods:
+  - GET
+  prefix: ""
+  relativeurl: /population/crime/city/{city:[a-zA-Z_]*}

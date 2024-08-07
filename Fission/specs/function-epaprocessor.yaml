@@ -1,0 +1,52 @@
+include:
+- ./functions/epaprocessor.js
+kind: ArchiveUploadSpec
+name: functions-epaprocessor-js-Lu4I
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: epaprocessor-d05259e8-eedb-4f46-8b92-5e2300cf5c2a
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://functions-epaprocessor-js-Lu4I
+  environment:
+    name: nodejs
+    namespace: ""
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2024-05-12T09:29:04Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: epaprocessor
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: nodejs
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: epaprocessor-d05259e8-eedb-4f46-8b92-5e2300cf5c2a
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

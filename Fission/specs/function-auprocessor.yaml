@@ -1,0 +1,52 @@
+include:
+- ./functions/auprocessor.js
+kind: ArchiveUploadSpec
+name: functions-auprocessor-js-MiHK
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: auprocessor-06c80d47-e54c-4477-8951-81e60ccf2cd9
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://functions-auprocessor-js-MiHK
+  environment:
+    name: nodejs
+    namespace: ""
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2024-05-13T04:12:24Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: auprocessor
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: nodejs
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: auprocessor-06c80d47-e54c-4477-8951-81e60ccf2cd9
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

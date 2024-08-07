@@ -1,0 +1,52 @@
+include:
+- ./functions/bomharvesting-northern-country.py
+kind: ArchiveUploadSpec
+name: functions-bomharvesting-northern-country-py-dYtb
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: bomharvesting-northern-cou-e0c6de9e-fc2c-444a-8205-f90de17fd259
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://functions-bomharvesting-northern-country-py-dYtb
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2024-05-14T04:19:23Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: bomharvesting-northern-country
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: bomharvesting-northern-cou-e0c6de9e-fc2c-444a-8205-f90de17fd259
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

@@ -1,0 +1,52 @@
+include:
+- ./functions/bomharvesting-mel-2.py
+kind: ArchiveUploadSpec
+name: functions-bomharvesting-mel-2-py-JY7q
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: bomharvesting-mel-2-3cd10419-5222-48f7-b5f0-7affa037ef50
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://functions-bomharvesting-mel-2-py-JY7q
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2024-05-11T14:03:21Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: bomharvesting-mel-2
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: bomharvesting-mel-2-3cd10419-5222-48f7-b5f0-7affa037ef50
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}

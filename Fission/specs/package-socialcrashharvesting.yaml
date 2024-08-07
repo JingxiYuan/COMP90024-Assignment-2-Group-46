@@ -1,0 +1,25 @@
+include:
+- ./functions/socialcrashharvesting.zip
+kind: ArchiveUploadSpec
+name: functions-socialcrashharvesting-zip-rT9g
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: socialcrashharvesting
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://functions-socialcrashharvesting-zip-rT9g
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-15T04:12:38Z"

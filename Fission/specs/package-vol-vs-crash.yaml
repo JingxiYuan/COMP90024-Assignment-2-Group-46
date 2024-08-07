@@ -1,0 +1,25 @@
+include:
+- ./processVolCra.zip
+kind: ArchiveUploadSpec
+name: processvolcra-zip-mAre
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: vol-vs-crash
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: relapython
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://processvolcra-zip-mAre
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-13T05:09:49Z"
